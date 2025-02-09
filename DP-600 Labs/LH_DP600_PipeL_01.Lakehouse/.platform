@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "LH_DP600_PipeL_01"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "600c222b-97b3-93a6-4e1d-c45cbff7853c"
+  }
+}

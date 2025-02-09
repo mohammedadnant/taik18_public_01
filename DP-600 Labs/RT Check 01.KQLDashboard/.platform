@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDashboard",
+    "displayName": "RT Check 01",
+    "description": "RT Check 01"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "971f3df2-db3a-b03a-4dc2-450b1195a153"
+  }
+}

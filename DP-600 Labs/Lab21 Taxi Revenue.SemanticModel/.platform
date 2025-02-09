@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Lab21 Taxi Revenue"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cbf00e4b-6b3c-b024-4519-4a94d9e7e893"
+  }
+}

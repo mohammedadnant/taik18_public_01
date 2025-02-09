@@ -1,0 +1,9 @@
+// KQL script
+// Use management commands in this script to configure your database items, such as tables, functions, materialized views, and more.
+
+
+.create-merge table sales (SalesOrderNumber:string, SalesOrderLineNumber:long, OrderDate:datetime, CustomerName:string, EmailAddress:string, Item:string, Quantity:long, UnitPrice:real, TaxAmount:real) 
+.create-or-alter table sales ingestion csv mapping 'sales_mapping'
+```
+[{"Properties":{"Ordinal":"0"},"column":"SalesOrderNumber","datatype":""},{"Properties":{"Ordinal":"1"},"column":"SalesOrderLineNumber","datatype":""},{"Properties":{"Ordinal":"2"},"column":"OrderDate","datatype":""},{"Properties":{"Ordinal":"3"},"column":"CustomerName","datatype":""},{"Properties":{"Ordinal":"4"},"column":"EmailAddress","datatype":""},{"Properties":{"Ordinal":"5"},"column":"Item","datatype":""},{"Properties":{"Ordinal":"6"},"column":"Quantity","datatype":""},{"Properties":{"Ordinal":"7"},"column":"UnitPrice","datatype":""},{"Properties":{"Ordinal":"8"},"column":"TaxAmount","datatype":""}]
+```

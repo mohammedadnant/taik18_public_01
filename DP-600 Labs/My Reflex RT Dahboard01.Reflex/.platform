@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Reflex",
+    "displayName": "My Reflex RT Dahboard01"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3ce42eb2-9ab3-85a1-4299-17eeda67842e"
+  }
+}

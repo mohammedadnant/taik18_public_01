@@ -1,0 +1,48 @@
+{
+  "sources": [
+    {
+      "id": "494a17a4-0246-4130-9b57-fa64bb74a0a0",
+      "name": "custom1",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "3991da03-773b-4399-9889-9c260edbf838",
+      "name": "PyCSV01",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "48c428a1-03c8-85bf-4454-d94df1a7183e",
+        "databaseName": "Sample01",
+        "tableName": "PythonSampleTbl01",
+        "inputSerialization": {
+          "type": "Csv",
+          "properties": {
+            "encoding": "UTF8",
+            "fieldDelimiter": ",",
+            "format": "WithoutHeaders"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "EventStream01-stream"
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "a1d36b79-cf7f-4f4e-b925-e0c97f667d1c",
+      "name": "EventStream01-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": []
+    }
+  ],
+  "operators": [],
+  "compatibilityLevel": "1.0"
+}

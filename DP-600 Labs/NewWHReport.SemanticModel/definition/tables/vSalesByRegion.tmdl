@@ -1,0 +1,67 @@
+table vSalesByRegion
+	lineageTag: fd1e1d07-e5e7-4e38-a3d4-2afc5460bd5d
+	sourceLineageTag: [dbo].[vSalesByRegion]
+
+	column CalendarYear
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d75be8d0-c66e-44bf-8329-113ea5c04b1d
+		sourceLineageTag: CalendarYear
+		summarizeBy: sum
+		sourceColumn: CalendarYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthOfYear
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 61c45836-87c4-4409-8d83-ae615554325e
+		sourceLineageTag: MonthOfYear
+		summarizeBy: sum
+		sourceColumn: MonthOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		sourceProviderType: varchar(12)
+		lineageTag: 6e9101b5-d66d-4887-bf83-f0833de635fc
+		sourceLineageTag: MonthName
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesRegion
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: d4de95d4-992c-4756-858e-2b89d558b5c4
+		sourceLineageTag: SalesRegion
+		summarizeBy: none
+		sourceColumn: SalesRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesRevenue
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: 096368d0-ac85-4eba-abc3-55d69d3ecc4b
+		sourceLineageTag: SalesRevenue
+		summarizeBy: sum
+		sourceColumn: SalesRevenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition vSalesByRegion = entity
+		mode: directLake
+		source
+			entityName: vSalesByRegion
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

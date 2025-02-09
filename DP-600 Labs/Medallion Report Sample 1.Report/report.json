@@ -1,0 +1,60 @@
+{
+  "config": "{\"version\":\"5.53\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU05\",\"version\":\"5.53\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU05",
+            "path": "BaseThemes/CY24SU05.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"1d3c8c8710c506ebc126\",\"layouts\":[{\"id\":0,\"position\":{\"x\":15.471394037066883,\"y\":93.85979049153909,\"z\":0,\"width\":279.5165189363417,\"height\":279.5165189363417,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"dimcustomer_gold.CustomerName\"},{\"queryRef\":\"factsales_gold.Sales\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dimcustomer_gold\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"factsales_gold\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CustomerName\"},\"Name\":\"dimcustomer_gold.CustomerName\",\"NativeReferenceName\":\"CustomerName\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Sales\"},\"Name\":\"factsales_gold.Sales\",\"NativeReferenceName\":\"Sales\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 279.52,
+          "width": 279.52,
+          "x": 15.47,
+          "y": 93.86,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"49fa13d79ce91dc84541\",\"layouts\":[{\"id\":0,\"position\":{\"x\":800.3867848509267,\"y\":38.16277195809831,\"z\":2,\"width\":423.9161966156326,\"height\":681.7727639000806,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"dimproduct_gold.ItemName\"},{\"queryRef\":\"Sum(factsales_gold.Quantity)\"},{\"queryRef\":\"factsales_gold.Sales\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dimproduct_gold\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"factsales_gold\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"ItemName\"},\"Name\":\"dimproduct_gold.ItemName\",\"NativeReferenceName\":\"ItemName\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Quantity\"}},\"Function\":0},\"Name\":\"Sum(factsales_gold.Quantity)\",\"NativeReferenceName\":\"Sum of Quantity\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Sales\"},\"Name\":\"factsales_gold.Sales\",\"NativeReferenceName\":\"Sales\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 681.77,
+          "width": 423.92,
+          "x": 800.39,
+          "y": 38.16,
+          "z": 2.00
+        },
+        {
+          "config": "{\"name\":\"cf9cd20005c7906d0b98\",\"layouts\":[{\"id\":0,\"position\":{\"x\":425.97904915390814,\"y\":48.47703464947623,\"z\":1,\"width\":279.5165189363417,\"height\":280.5479452054795,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"factsales_gold.Sales\"}],\"Category\":[{\"queryRef\":\"dimdate_gold.Year\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"factsales_gold\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"dimdate_gold\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"dimdate_gold.Year\",\"NativeReferenceName\":\"Sum of Year\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Sales\"},\"Name\":\"factsales_gold.Sales\",\"NativeReferenceName\":\"Sales\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Sales\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 280.55,
+          "width": 279.52,
+          "x": 425.98,
+          "y": 48.48,
+          "z": 1.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

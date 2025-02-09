@@ -1,0 +1,44 @@
+table Subcategory
+	lineageTag: 67e0e3b4-d60b-4347-b121-90dee95d124c
+
+	column ProductSubcategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 026987d3-794f-482f-89ff-e486aac8808e
+		summarizeBy: none
+		sourceColumn: ProductSubcategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subcategory
+		dataType: string
+		lineageTag: 940d4bf2-aebb-4101-b0b0-2a2b2e4c3afb
+		summarizeBy: none
+		sourceColumn: Subcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e49ae11-18a4-48ca-beb8-37cc2edf96a3
+		summarizeBy: none
+		sourceColumn: ProductCategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Subcategory-50fff7a9-6124-4b1b-8bb8-7a8e8574c009 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServerInstance, SqlServerDatabase),
+				    dbo_DimProductSubcategory = Source{[Schema="dbo",Item="DimProductSubcategory"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_DimProductSubcategory,{"ProductSubcategoryKey", "EnglishProductSubcategoryName", "ProductCategoryKey"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"EnglishProductSubcategoryName", "Subcategory"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

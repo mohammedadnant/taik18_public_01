@@ -1,0 +1,8 @@
+relationship dd3afc89-1690-41a8-f64c-81ea147baf6f
+	fromColumn: Trip.DateID
+	toColumn: Weather.DateID
+
+relationship c2fe6775-c17b-8531-155f-db39a6c36f77
+	fromColumn: Trip.DateID
+	toColumn: Date.DateID
+

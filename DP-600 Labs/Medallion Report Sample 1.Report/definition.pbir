@@ -1,0 +1,8 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../NB_PipeL_01.SemanticModel"
+    }
+  }
+}

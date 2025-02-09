@@ -1,0 +1,14 @@
+expression SqlServerInstance = "localhost" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 0318d784-2471-4fb7-a6c9-ba85102f4709
+
+expression SqlServerDatabase = "AdventureWorksDW2022-DP500" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 4acfd32c-9d8d-46aa-99ce-406013808278
+
+	annotation PBI_NavigationStepName = Navigation
+
+/// Used to format month names in the Date query.
+expression Culture = "en-US" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: b5a3943e-eaff-4d2f-b6d0-f7ca0e3c1c82
+
+	annotation PBI_NavigationStepName = Navigation
+

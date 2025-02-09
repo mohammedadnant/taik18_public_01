@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Sales Analysis - Use tools to optimize Power BI performance"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "57f55089-94fe-9ff9-4f3c-abe78fb984f9"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "TopCategorySales"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f08cc6b7-708e-a93f-4064-1c4cbd30a13c"
+  }
+}

@@ -1,0 +1,35 @@
+table Category
+	lineageTag: eb9f7b26-6e9a-41e6-bf3e-8b89a0654734
+
+	column ProductCategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 2948994c-4379-49d4-916f-9fb021595c04
+		summarizeBy: none
+		sourceColumn: ProductCategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 40a1dbbd-f549-49bf-94af-d0e0cb430379
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Category-831faca0-d494-43e2-ba11-200979b61e38 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServerInstance, SqlServerDatabase),
+				    dbo_DimProductCategory = Source{[Schema="dbo",Item="DimProductCategory"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_DimProductCategory,{"ProductCategoryKey", "EnglishProductCategoryName"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"EnglishProductCategoryName", "Category"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

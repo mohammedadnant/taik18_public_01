@@ -1,0 +1,107 @@
+table Product
+	lineageTag: 772483b7-4b11-4624-9fde-96dc9be364c1
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f471f2a1-2dc3-4544-a192-0c4179af1a19
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnglishProductName
+		dataType: string
+		lineageTag: 86cbc1e0-137d-40c0-a3f3-fd47af4ba35c
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: EnglishProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column StandardCost
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 71322182-5933-41dd-a728-651562522f80
+		summarizeBy: sum
+		sourceColumn: StandardCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Color
+		dataType: string
+		lineageTag: ca39b3df-2b66-4eee-82cb-093fa3204759
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column ListPrice
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b9ca2046-6090-4abe-8c1f-3ccb09f679c0
+		summarizeBy: sum
+		sourceColumn: ListPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column ModelName
+		dataType: string
+		lineageTag: 7277fa98-8672-42ca-890a-90588fdd6e8f
+		summarizeBy: none
+		sourceColumn: ModelName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductAlternateKey
+		dataType: string
+		lineageTag: 8e10d542-7c64-4151-bf16-78040d28849c
+		summarizeBy: none
+		sourceColumn: ProductAlternateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductSubcategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: f934146f-6e37-4132-9bb5-2ab08b0f822e
+		summarizeBy: none
+		sourceColumn: ProductSubcategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy Products
+		lineageTag: 3d80ab5b-d62d-4196-bf80-bdc73354f7ce
+
+		level ModelName
+			lineageTag: 1acff4b4-ed0c-438e-ba8a-78604804936c
+			column: ModelName
+
+		level EnglishProductName
+			lineageTag: 54bba5ff-d06d-46a6-8b88-7a809bed7b33
+			column: EnglishProductName
+
+	partition Product-3d5e98b2-a997-4444-96bb-fe1718e2f2b8 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServerInstance, SqlServerDatabase),
+				    dbo_DimProduct = Source{[Schema="dbo",Item="DimProduct"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(dbo_DimProduct, each ([FinishedGoodsFlag] = true)),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"ProductKey", "ProductAlternateKey", "ProductSubcategoryKey", "EnglishProductName", "StandardCost", "Color", "ListPrice", "ModelName"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+	annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":[]}
+

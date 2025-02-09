@@ -1,0 +1,45 @@
+table TopCustomer_ByCategory
+	lineageTag: 2419d304-27ec-4888-b65c-240e9339f37a
+	sourceLineageTag: [Sales].[TopCustomer_ByCategory]
+
+	column Category
+		dataType: string
+		sourceProviderType: varchar(6)
+		lineageTag: 6019077a-1877-4552-bf0d-ca7f04855aa9
+		sourceLineageTag: Category
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		sourceProviderType: varchar(255)
+		lineageTag: 3c125619-3bd6-4792-9404-962d7c9abf2a
+		sourceLineageTag: CustomerName
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalSales
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 4b63a60d-f16b-4af7-9a2c-633d25641179
+		sourceLineageTag: TotalSales
+		summarizeBy: sum
+		sourceColumn: TotalSales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition TopCustomer_ByCategory = entity
+		mode: directLake
+		source
+			entityName: TopCustomer_ByCategory
+			schemaName: Sales
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,142 @@
+table Sales
+	lineageTag: 7c16d677-69ab-40dd-947d-4c4e5956af1a
+
+	measure Profit = SUM ( 'Sales'[Sales Amount] ) - SUM ( 'Sales'[Total Product Cost] )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 9a825554-efb4-4b4e-9256-43b03a1f3cca
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Profit Margin' = [Profit] / SUM ( 'Sales'[Sales Amount] )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 175ef325-9d21-4499-85a3-fdc0212dd20e
+
+		changedProperty = FormatString
+
+	column SalesOrderLineKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5064ecc0-e5ec-49c8-b163-48c93a4b8fb1
+		summarizeBy: none
+		sourceColumn: SalesOrderLineKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResellerKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5efbc740-34c2-42c6-842f-c4e62bd6f0f9
+		summarizeBy: none
+		sourceColumn: ResellerKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6ad0b6e1-efff-4238-a39e-b1f7caef3e67
+		summarizeBy: count
+		sourceColumn: CustomerKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b5103f3a-fa2b-4faf-be1c-46850415c90a
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 10d2ca3c-5033-4415-a404-d3f21794f545
+		summarizeBy: none
+		sourceColumn: OrderDateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0098cad5-4c99-4bba-8780-f42c11727645
+		summarizeBy: none
+		sourceColumn: SalesTerritoryKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Product Cost'
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 8e0fbb4d-882f-48b3-a90a-a5cd32bc26d5
+		summarizeBy: none
+		sourceColumn: Total Product Cost
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Sales Amount'
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 32ec7474-f2c1-4bd2-bf30-0bc121d6fe05
+		summarizeBy: sum
+		sourceColumn: Sales Amount
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column DueDateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a3c7df68-ff45-4e4e-b0c9-56a3f2bf02f7
+		summarizeBy: count
+		sourceColumn: DueDateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sales-1c496a38-f0f4-4d25-b987-657177c38553 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServerInstance, SqlServerDatabase),
+				    dbo_vFactSales = Source{[Schema="dbo",Item="vFactSales"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_vFactSales,{"SalesOrderLineKey", "ResellerKey", "CustomerKey", "ProductKey", "OrderDateKey", "DueDateKey", "SalesTerritoryKey", "TotalProductCost", "SalesAmount"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"SalesAmount", "Sales Amount"}, {"TotalProductCost", "Total Product Cost"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
