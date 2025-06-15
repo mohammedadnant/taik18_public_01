@@ -11,3 +11,14 @@ Interactive & scripting modes – switch fluidly between live shell and one‑of
 Automation ready – ideal for GitHub Actions, Azure Pipelines, or any Bash/PowerShell/Python workflow
 Cross‑platform – Windows Terminal, macOS Terminal, Linux shells
 Built on public APIs – Fabric REST, OneLake, and Microsoft.Fabric ARM endpoints
+
+🚀 Install
+Prerequisite: Make sure Python version 3.10, 3.11, or 3.12 is installed on your machine and that python is accessible from your terminal (PATH environment variable).
+
+pip install ms-fabric-cli
+
+The command installs the latest version of fab on Windows, macOS, and Linux. If you’re upgrading from an earlier version, simply run the same command with ‑‑upgrade.
+
+Need a different method? See the release notes for standalone binaries and package managers as they become available.
+
+
