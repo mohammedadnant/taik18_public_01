@@ -1,0 +1,13 @@
+Microsoft Fabric CLI -  In view of Mohammed Adnan (taik18)
+
+starting details taken from Microsoft docs (https://microsoft.github.io/fabric-cli/)
+
+The Fabric CLI (fab) is a fast, file‑system‑inspired command‑line interface for Microsoft Fabric.
+Explore, automate, and script your Fabric environment—right from your terminal.
+
+Key features
+File‑system navigation – ls, cd, mkdir, cp, rm, run
+Interactive & scripting modes – switch fluidly between live shell and one‑off commands
+Automation ready – ideal for GitHub Actions, Azure Pipelines, or any Bash/PowerShell/Python workflow
+Cross‑platform – Windows Terminal, macOS Terminal, Linux shells
+Built on public APIs – Fabric REST, OneLake, and Microsoft.Fabric ARM endpoints
