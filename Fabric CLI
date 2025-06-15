@@ -22,3 +22,6 @@ The command installs the latest version of fab on Windows, macOS, and Linux. If 
 Need a different method? See the release notes for standalone binaries and package managers as they become available.
 
 
+when you login - it can be via few ways as below, and further actions depends on the login,
+if you have access to few workspaces then you can work on only those, if you use SERVICE PRINCIPAL and it has access to only few workspaces for example, 
+then it also works only for those workspaces, if you want to work on all the workspaces either you need to login using admin or you need have access to all the workspaces
